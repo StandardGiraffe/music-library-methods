@@ -24,9 +24,9 @@ var library = {
 
 // ### Methods Below ###
 
-  countTracks: function (listID) {
-    return library["playlists"][listID].tracks.length;
-  }
+  // countTracks: function (listID) {
+  //   return library["playlists"][listID].tracks.length;
+  // }
 
 
   printPlaylists: function () {
@@ -37,13 +37,12 @@ var library = {
       return library["playlists"][listID].tracks.length;
     }
 
-    for (var i in library.playlists) {
-      console.log(`${library.playlists[i].id}: ${library.playlists[i].name} - ${countTracks(i)} tracks`);
+    for (var i in this.playlists) {
+      console.log(`${this.playlists[i].id}: ${this.playlists[i].name} - ${countTracks(i)} tracks`);
     }
 
   }
 
-  // console.log(printPlaylists()); // for testing porpoises
 
 
   printTracks: function () {
@@ -53,14 +52,11 @@ var library = {
     // t02: Model View Controller by James Dempsey (WWDC 2003)
     // t03: Four Thirty-Three by John Cage (Woodstock 1952)
 
-    for (var i in library.tracks) {
-      console.log(`${library.tracks[i].id}: ${library.tracks[i].name} by ${library.tracks[i].artist} (${library.tracks[i].album})`);
+    for (var i in this.tracks) {
+      console.log(`${this.tracks[i].id}: ${this.tracks[i].name} by ${this.tracks[i].artist} (${this.tracks[i].album})`);
     }
 
   }
-
-  // printTracks(); // for testing porpoises
-
 
   printPlaylist: function (playlistId) {
 
@@ -73,28 +69,20 @@ var library = {
       return library["playlists"][listID].tracks.length;
     }
 
-    console.log(`${library.playlists[playlistId].id}: ${library.playlists[playlistId].name} - ${countTracks(playlistId)} tracks`);
+    console.log(`${this.playlists[playlistId].id}: ${this.playlists[playlistId].name} - ${countTracks(playlistId)} tracks`);
 
-    for (var i of library.playlists[playlistId].tracks) {
-        console.log(`${library.tracks[i].id}: ${library.tracks[i].name} by ${library.tracks[i].artist} (${library.tracks[i].album})`);
+    for (var i of this.playlists[playlistId].tracks) {
+        console.log(`${this.tracks[i].id}: ${this.tracks[i].name} by ${this.tracks[i].artist} (${this.tracks[i].album})`);
     }
 
   }
-
-  // printPlaylist("p01"); // for testing porpoises
-  // printPlaylist("p02"); // for testing porpoises
 
   addTrackToPlaylist: function (trackId, playlistId) {
     // adds an existing track to an existing playlist
     // console.log(`trackId is ${trackId}`); // for testing porpoises
     // console.log(`playlistId is ${playlistId}`); // for testing porpoises
-    library.playlists[playlistId].tracks.push(trackId);
+    this.playlists[playlistId].tracks.push(trackId);
   }
-
-  // addTrackToPlaylist("t01", "p02"); // for testing porpoises
-  // console.log("\n"); // for testing porpoises
-  // printPlaylist("p02"); // for testing porpoises
-
 
   addTrack: function (name, artist, album) {
     // adds a track to the library
@@ -107,27 +95,16 @@ var library = {
     }
 
 
-    var totalTracks = Object.entries(library.tracks).length;
+    var totalTracks = Object.entries(this.tracks).length;
     console.log(`Before adding tracks, there were ${totalTracks} total tracks.`);
 
     var newTrackID = uid();
-    library.tracks[newTrackID] = { "id": `t0${totalTracks + 1}`, "name": name, "artist": artist, "album": album}
+    this.tracks[newTrackID] = { "id": `t0${totalTracks + 1}`, "name": name, "artist": artist, "album": album}
 
-    totalTracks = Object.entries(library.tracks).length;
+    totalTracks = Object.entries(this.tracks).length;
     console.log(`Now, there are ${totalTracks} total tracks.`);
 
   }
-
-  /* Test porp
-  addTrack("4ware", "deadmau5", `w:/2016ALBUM`);
-  addTrack("The Drinking Song", "Moxy Fruvous", `That album it was on`);
-  printTracks(); // for testing porpoises
-  */
-
-
-  // console.log("Test print:\n" + printTracks());
-
-  // adds a playlist to the library
 
   addPlaylist: function (name) {
 
@@ -136,13 +113,13 @@ var library = {
     }
 
 
-    var totalPlaylists = Object.entries(library.playlists).length;
+    var totalPlaylists = Object.entries(this.playlists).length;
     console.log(`Before adding playlists, there were ${totalPlaylists} total playlists.`);
 
     var newPlaylistID = uid();
-    library.playlists[newPlaylistID] = { "id": `p0${totalPlaylists + 1}`, "name": name, "tracks": []}
+    this.playlists[newPlaylistID] = { "id": `p0${totalPlaylists + 1}`, "name": name, "tracks": []}
 
-    totalPlaylists = Object.entries(library.playlists).length;
+    totalPlaylists = Object.entries(this.playlists).length;
     console.log(`Before adding playlists, there were ${totalPlaylists} total playlists.`);
 
   }
@@ -150,10 +127,6 @@ var library = {
 }
 
 
-// addPlaylist("Victory Music");
-// printPlaylists();
-// addTrackToPlaylist("t01", "p03");
-// printPlaylists();
 
 
 // STRETCH:
@@ -165,3 +138,31 @@ var library = {
 var printSearchResults = function(query) {
 
 }
+
+// ## Testing ##
+
+// console.log(printPlaylists()); // for testing porpoises
+// printTracks(); // for testing porpoises
+
+// printPlaylist("p01"); // for testing porpoises
+// printPlaylist("p02"); // for testing porpoises
+
+// addTrackToPlaylist("t01", "p02"); // for testing porpoises
+// console.log("\n"); // for testing porpoises
+// printPlaylist("p02"); // for testing porpoises
+
+/* Test porp
+addTrack("4ware", "deadmau5", `w:/2016ALBUM`);
+addTrack("The Drinking Song", "Moxy Fruvous", `That album it was on`);
+printTracks(); // for testing porpoises
+*/
+
+
+// console.log("Test print:\n" + printTracks());
+
+// adds a playlist to the library
+
+// addPlaylist("Victory Music");
+// printPlaylists();
+// addTrackToPlaylist("t01", "p03");
+// printPlaylists();
