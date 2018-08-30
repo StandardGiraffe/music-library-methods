@@ -20,7 +20,7 @@ var library = {
                       name: "Other Playlist",
                       tracks: ["t03"]
                     }
-             }
+             },
 
 // ### Methods Below ###
 
@@ -41,7 +41,7 @@ var library = {
       console.log(`${this.playlists[i].id}: ${this.playlists[i].name} - ${countTracks(i)} tracks`);
     }
 
-  }
+  },
 
 
 
@@ -56,7 +56,7 @@ var library = {
       console.log(`${this.tracks[i].id}: ${this.tracks[i].name} by ${this.tracks[i].artist} (${this.tracks[i].album})`);
     }
 
-  }
+  },
 
   printPlaylist: function (playlistId) {
 
@@ -75,14 +75,14 @@ var library = {
         console.log(`${this.tracks[i].id}: ${this.tracks[i].name} by ${this.tracks[i].artist} (${this.tracks[i].album})`);
     }
 
-  }
+  },
 
   addTrackToPlaylist: function (trackId, playlistId) {
     // adds an existing track to an existing playlist
     // console.log(`trackId is ${trackId}`); // for testing porpoises
     // console.log(`playlistId is ${playlistId}`); // for testing porpoises
     this.playlists[playlistId].tracks.push(trackId);
-  }
+  },
 
   addTrack: function (name, artist, album) {
     // adds a track to the library
@@ -104,7 +104,7 @@ var library = {
     totalTracks = Object.entries(this.tracks).length;
     console.log(`Now, there are ${totalTracks} total tracks.`);
 
-  }
+  },
 
   addPlaylist: function (name) {
 
@@ -138,24 +138,24 @@ var library = {
 var printSearchResults = function(query) {
 
 }
-
+/*
 // ## Testing ##
 
-// console.log(printPlaylists()); // for testing porpoises
-// printTracks(); // for testing porpoises
+library.printPlaylists(); // for testing porpoises
+library.printTracks(); // for testing porpoises
 
-// printPlaylist("p01"); // for testing porpoises
-// printPlaylist("p02"); // for testing porpoises
+library.printPlaylist("p01"); // for testing porpoises
+library.printPlaylist("p02"); // for testing porpoises
 
-// addTrackToPlaylist("t01", "p02"); // for testing porpoises
-// console.log("\n"); // for testing porpoises
-// printPlaylist("p02"); // for testing porpoises
+library.addTrackToPlaylist("t01", "p02"); // for testing porpoises
+console.log("\n"); // for testing porpoises
+library.printPlaylist("p02"); // for testing porpoises
 
-/* Test porp
-addTrack("4ware", "deadmau5", `w:/2016ALBUM`);
-addTrack("The Drinking Song", "Moxy Fruvous", `That album it was on`);
-printTracks(); // for testing porpoises
-*/
+
+library.addTrack("4ware", "deadmau5", `w:/2016ALBUM`);
+library.addTrack("The Drinking Song", "Moxy Fruvous", `That album it was on`);
+library.printTracks(); // for testing porpoises
+
 
 
 // console.log("Test print:\n" + printTracks());
@@ -166,3 +166,4 @@ printTracks(); // for testing porpoises
 // printPlaylists();
 // addTrackToPlaylist("t01", "p03");
 // printPlaylists();
+*/
